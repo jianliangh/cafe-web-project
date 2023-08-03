@@ -1,5 +1,5 @@
 package first.webapp;
-
+//This is user object
 public class User {
     protected String name;
     protected String password;
