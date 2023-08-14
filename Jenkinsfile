@@ -43,11 +43,5 @@ sh "${SONAR_SCANNER_HOME}/bin/sonar-scanner -Dsonar.host.url='http://172.17.0.3:
 def getWarFileName() {
     def workspace = env.WORKSPACE
     def warDir = "${workspace}/target"
-    def warFiles = findFiles(glob: '**/*.war', directory: warDir)
-    
-    if (warFiles.size() > 0) {
-        return warFiles[0].name
-    } else {
-        error "No WAR files found in ${warDir}"
-    }
+    return ${warDir}
 }
