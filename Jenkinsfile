@@ -43,5 +43,5 @@ sh "${SONAR_SCANNER_HOME}/bin/sonar-scanner -Dsonar.host.url='http://172.17.0.3:
 def getWarFileName() {
     def workspace = env.WORKSPACE
     def warDir = "${workspace}/target"
-    return ${warDir}
+    return warDir
 }
