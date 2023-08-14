@@ -31,6 +31,12 @@ sh "mvn clean package"
 sh "${SONAR_SCANNER_HOME}/bin/sonar-scanner -Dsonar.host.url='http://172.17.0.3:9000' -Dsonar.token='squ_1a6daa8cda9963ee31f1cf1fb94b471d6ad5f643' -Dsonar.projectKey='squ_1a6daa8cda9963ee31f1cf1fb94b471d6ad5f643' -Dsonar.sources=src -Dsonar.language=java -Dsonar.java.binaries=target/classes"
             }
         }
+          stage('Deploy to Tomcat') {
+            steps {
+                sh "cp /var/jenkins_home/workspace/maven-web-project-pipelline/target/lesson14-0.0.1-SNAPSHOT.war /usr/local/tomcat/webapps"
+            }
+        }
+  
 }
 }
 
