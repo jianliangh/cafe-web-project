@@ -35,14 +35,11 @@ sh "${SONAR_SCANNER_HOME}/bin/sonar-scanner -Dsonar.host.url='http://172.17.0.3:
           stage('Deploy to Tomcat') {
             steps {
               script {
-                def WarFile = sh(script: "find ${WAR_DIR} -type f -name '*.war'", returnStdout: true).trim()
-              
-                    def warFiles = WarFile.split('\n')
-                    
-                    echo "${warFiles}"
-
+                def WarFiles = sh(script: "find ${WAR_DIR} -type f -name '*.war'", returnStdout: true).trim()
+                def WarFile = WarFile.split('\n')[0]
+                sh "rm -rf http://tomcat:password@172.17.0.4:8080/manager/text/deploy?path=/lesson14"
+                sh 'curl --upload-file ${WarFile} http://tomcat:password@172.17.0.4:8080/manager/text/deploy?path=/lesson14'
               }
-                sh 'curl --upload-file /var/jenkins_home/workspace/maven-web-project-pipelline/target/lesson14-0.0.1-SNAPSHOT.war http://tomcat:password@172.17.0.4:8080/manager/text/deploy?path=/lesson14'
             }
         }
   
