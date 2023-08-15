@@ -44,6 +44,6 @@ sh "${SONAR_SCANNER_HOME}/bin/sonar-scanner -Dsonar.host.url='http://172.17.0.3:
 def getWarFileName() {
     def workspace = env.WORKSPACE
     def warDir = "${workspace}/target"
-    def warFiles = findFiles(glob: '**/*.war', directory: warDir)
+    def warFiles = fileTree(dir: warDir, include: '**/*.war')
     return warFiles
 }
