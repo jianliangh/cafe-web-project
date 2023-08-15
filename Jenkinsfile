@@ -36,7 +36,7 @@ sh "${SONAR_SCANNER_HOME}/bin/sonar-scanner -Dsonar.host.url='http://172.17.0.3:
             steps {
                 def WarFile = sh(script: "find ${WAR_DIR} -type f -name '*.war'", returnStdout: true).trim()
               
-                    def warFiles = commandOutput.split('\n')
+                    def warFiles = WarFile.split('\n')
                     
                     echo "Found ${warFiles.size()} WAR file(s) in ${WAR_DIR}:"
                     warFiles.each { warFile ->
