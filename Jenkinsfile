@@ -36,7 +36,8 @@ pipeline {
             steps {
                 script {
                     def WarFiles = sh(script: "find ${WAR_DIR} -type f -name '*.war'", returnStdout: true).trim()
-                    def execute = sh(script: "curl -F ${WarFiles} http://tomcat:password@172.17.0.4:8080/manager/text/deploy?path=/lesson14&update=true")
+                    def delete = sh(rm -rf http://tomcat:password@172.17.0.4:8080//usr/local/tomcat/webapps/lesson14')
+                    def execute = sh(script: "curl --upload-file ${WarFiles} http://tomcat:password@172.17.0.4:8080/manager/text/deploy?path=/lesson14&update=true")
                 }
             }
         }
