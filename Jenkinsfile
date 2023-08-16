@@ -4,6 +4,7 @@ pipeline {
         SONAR_SCANNER_HOME = tool 'SonarQubeScanner'
         SONAR_SCANNER_PATH = "${SONAR_SCANNER_HOME}/bin/sonar-scanner"
         SONAR_URL   = "-Dsonar.host.url='http://172.17.0.3:9000'"
+        SONAR_TOKEN = "-Dsonar.token='squ_1a6daa8cda9963ee31f1cf1fb94b471d6ad5f643'"
         SONAR_KEY   = '-Dsonar.projectKey=squ_1a6daa8cda9963ee31f1cf1fb94b471d6ad5f643'
         SONAR_NAME  = '-Dsonar.projectName=Web-Pipeline'
         SONAR_INFO  = '-Dsonar.sources=src/main -Dsonar.sourceEncoding=UTF-8 -Dsonar.language=java'
@@ -21,6 +22,7 @@ pipeline {
         TOMCAT_URL = '172.17.0.4:8080'
         TOMCAT_DEPLOY = 'lesson15'
         TOMCAT_PATH = "http://${TOMCAT_INFO}@${TOMCAT_URL}/manager/text/deploy?path=/${TOMCAT_DEPLOY}&update=true"
+        TOMCAT_CLEAN = "${TOMCAT_URL}/manager/text/undeploy?path=${TOMCAT_DEPLOY}"
     }
     tools {
         maven 'Apache 3.8.6'
@@ -48,13 +50,14 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 echo 'Start Analysis'
-                sh "${SONAR_SCANNER_PATH}  ${SONAR_URL} -Dsonar.token='squ_1a6daa8cda9963ee31f1cf1fb94b471d6ad5f643' ${SONAR_KEY} ${SONAR_NAME} ${SONAR_INFO} ${SONAR_TEST1} ${SONAR_TEST2} ${SONAR_TEST3} ${SONAR_TEST4} ${SONAR_TEST5} ${SONAR_TEST6}"
+                sh "${SONAR_SCANNER_PATH}  ${SONAR_URL} ${SONAR_TOKEN} ${SONAR_KEY} ${SONAR_NAME} ${SONAR_INFO} ${SONAR_TEST1} ${SONAR_TEST2} ${SONAR_TEST3} ${SONAR_TEST4} ${SONAR_TEST5} ${SONAR_TEST6}"
             }
         }
         stage('Deploy to Tomcat') {
             steps {
                 script {
                     echo 'Start Deploy'
+                    sh "curl -u  ${WAR_FILES} ${TOMCAT_CLEAN}"
                     sh(script: "curl --upload-file ${WAR_FILES} ${TOMCAT_PATH}")
                 }
             }
