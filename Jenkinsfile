@@ -22,8 +22,6 @@ pipeline {
         TOMCAT_URL = '172.17.0.4:8080'
         TOMCAT_DEPLOY = 'lesson15'
         TOMCAT_PATH = "http://${TOMCAT_INFO}@${TOMCAT_URL}/manager/text/deploy?path=/${TOMCAT_DEPLOY}&update=true"
-        TOMCAT_CLEAN = "${TOMCAT_URL}/manager/text/undeploy?path=${TOMCAT_DEPLOY}"
-        
     }
     tools {
         maven 'Apache 3.8.6'
@@ -58,7 +56,6 @@ pipeline {
             steps {
                 script {
                     echo 'Start Deploy'
-                    sh "curl -u ${TOMCAT_INFO} ${TOMCAT_CLEAN}"
                     sh(script: "curl --upload-file ${WAR_FILES} ${TOMCAT_PATH}")
                 }
             }
