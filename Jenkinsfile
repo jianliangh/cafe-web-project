@@ -16,6 +16,7 @@ pipeline {
         SONAR_TEST6 = '-Dsonar.java.coveragePlugin=jacoco'
 
         WAR_DIR = "${WORKSPACE}/target"
+        echo ${WORKSPACE}
         WAR_FILES = sh(script: "find ${WAR_DIR} -type f -name '*.war'", returnStdout: true).trim()
 
         TOMCAT_INFO = 'tomcat:password'
