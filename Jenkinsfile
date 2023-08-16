@@ -48,7 +48,7 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 echo 'Start Analysis'
-                sh "${SONAR_SCANNER_PATH}  ${SONAR_URL} ${SONAR_KEY} ${SONAR_NAME} ${SONAR_INFO} ${SONAR_TEST1} ${SONAR_TEST2} ${SONAR_TEST3} ${SONAR_TEST4} ${SONAR_TEST5} ${SONAR_TEST6}"
+                sh "${SONAR_SCANNER_PATH}  ${SONAR_URL} Dsonar.projectKey='squ_1a6daa8cda9963ee31f1cf1fb94b471d6ad5f643' ${SONAR_KEY} ${SONAR_NAME} ${SONAR_INFO} ${SONAR_TEST1} ${SONAR_TEST2} ${SONAR_TEST3} ${SONAR_TEST4} ${SONAR_TEST5} ${SONAR_TEST6}"
             }
         }
         stage('Deploy to Tomcat') {
