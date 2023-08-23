@@ -16,8 +16,6 @@ pipeline {
         SONAR_TEST6 = '-Dsonar.java.coveragePlugin=jacoco'
 
         WAR_DIR = "${WORKSPACE}/target"
-        WAR_FILES = sh(script: "find ${WAR_DIR} -type f -name '*.war'", returnStdout: true).trim()
-
         TOMCAT_INFO = 'tomcat:password'
         TOMCAT_URL = '172.17.0.4:8080'
         TOMCAT_DEPLOY = 'lesson15'
@@ -57,6 +55,7 @@ pipeline {
                 script {
                     echo 'Start Deploy'
                     echo ${WORKSPACE}
+                    WAR_FILES = sh(script: "find ${WAR_DIR} -type f -name '*.war'", returnStdout: true).trim()
                     sh(script: "curl --upload-file ${WAR_FILES} ${TOMCAT_PATH}")
                 }
             }
