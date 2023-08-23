@@ -54,8 +54,8 @@ pipeline {
             steps {
                 script {
                     echo 'Start Deploy'
-                    echo "${WORKSPACE}"
-                    echo "${WAR_DIR}"
+                    WAR_FILES = sh(script: "find ${WAR_DIR} -type f -name '*.war'", returnStdout: true).trim()
+                    sh(script: "curl --upload-file ${WAR_FILES} ${TOMCAT_PATH}")
 
                 }
             }
