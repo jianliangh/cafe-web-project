@@ -54,8 +54,8 @@ pipeline {
             steps {
                 script {
                     echo 'Start Deploy'
-                    echo ${WORKSPACE}
-                    echo ${WAR_DIR}
+                    echo "${WORKSPACE}"
+                    echo "${WAR_DIR}"
 
                 }
             }
