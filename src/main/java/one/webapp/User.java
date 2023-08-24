@@ -1,4 +1,4 @@
-package first.webapp;
+package one.webapp;
 //This is user object
 public class User {
     protected String name;

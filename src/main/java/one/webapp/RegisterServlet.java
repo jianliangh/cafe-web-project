@@ -1,4 +1,4 @@
-package first.webapp;
+package one.webapp;
 
 import java.io.IOException;
 
@@ -69,7 +69,7 @@ public class RegisterServlet extends HttpServlet {
 	 
 	            int i = ps.executeUpdate();
 	            if (i > 0)
-	                out.print("You are successfully registered... <button onclick=\"window.location.href='http://localhost:8085/lesson14/register.jsp';\"> Click to go to user registration </button>" ); //print out this message as response
+	                out.print("You are successfully registered... <button onclick=\"window.location.href='http://localhost:8090/web-cafe-project/register.jsp';\"> Click to go to user registration </button>" ); //print out this message as response
 	 
 	        } catch (Exception e2) {
 	            System.out.println(e2);

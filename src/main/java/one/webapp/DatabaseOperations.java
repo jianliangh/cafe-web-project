@@ -1,4 +1,4 @@
-package first.webapp;
+package one.webapp;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
