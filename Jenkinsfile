@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent any 
     environment {
         SONAR_SCANNER_HOME = tool 'SonarQubeScanner'
         SONAR_SCANNER_PATH = "${SONAR_SCANNER_HOME}/bin/sonar-scanner"
