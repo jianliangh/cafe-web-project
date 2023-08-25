@@ -31,11 +31,11 @@ public class DatabaseOperations {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
         } catch (SQLException e) {
-
+//            sql
 
         } catch (ClassNotFoundException e) {
         
-  
+//           class
         }
         return connection;
     }
@@ -63,7 +63,7 @@ public class DatabaseOperations {
     
             }
         } catch (SQLException e) {
-            printSQLException(e);
+//            sql
         }
         return users;
     }
@@ -72,9 +72,6 @@ public class DatabaseOperations {
         for (Throwable e: ex) {
             if (e instanceof SQLException) {
  
-                System.err.println("SQLState: " + ((SQLException) e).getSQLState());
-                System.err.println("Error Code: " + ((SQLException) e).getErrorCode());
-                System.err.println("Message: " + e.getMessage());
                 Throwable t = ex.getCause();
                 while (t != null) {
            

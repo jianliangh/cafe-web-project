@@ -31,8 +31,6 @@ public class UserServlet extends HttpServlet {
     private String jdbcUsername = "root";
     private String jdbcPassword = "";
 
-    private static final String INSERT_USERS_SQL = "INSERT INTO userdetails2" + "  (name, password, email, language) VALUES " +
-        " (?, ?, ?, ?);";
     private static final String SELECT_USER_BY_ID = "select name,password,email,language from userdetails2 where name =?";
     private static final String SELECT_ALL_USERS = "select * from userdetails2";
     private static final String DELETE_USERS_SQL = "delete from userdetails2 where name = ?;";
