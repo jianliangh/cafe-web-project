@@ -31,11 +31,11 @@ public class DatabaseOperations {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+
+
         } catch (ClassNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+        
+  
         }
         return connection;
     }
@@ -49,7 +49,7 @@ public class DatabaseOperations {
 
             // Step 2:Create a statement using connection object
             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_USERS);) {
-            System.out.println(preparedStatement);
+      
             // Step 3: Execute the query or update query
             ResultSet rs = preparedStatement.executeQuery();
 
@@ -60,7 +60,7 @@ public class DatabaseOperations {
                 String email = rs.getString("email");
                 String language = rs.getString("language");
                 users.add(new User(name, password, email, language));
-                System.out.println(name);
+    
             }
         } catch (SQLException e) {
             printSQLException(e);
@@ -71,13 +71,13 @@ public class DatabaseOperations {
     private void printSQLException(SQLException ex) {
         for (Throwable e: ex) {
             if (e instanceof SQLException) {
-                e.printStackTrace(System.err);
+ 
                 System.err.println("SQLState: " + ((SQLException) e).getSQLState());
                 System.err.println("Error Code: " + ((SQLException) e).getErrorCode());
                 System.err.println("Message: " + e.getMessage());
                 Throwable t = ex.getCause();
                 while (t != null) {
-                    System.out.println("Cause: " + t);
+           
                     t = t.getCause();
                 }
             }

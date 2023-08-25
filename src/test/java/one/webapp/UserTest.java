@@ -44,6 +44,7 @@ class UserTest {
 		
 		assertEquals(u.getName(),"abc");
 		assertEquals(u2.getName(),"abc");
+		System.out.println("testGetName: Passed");
 		
 	}
 
@@ -55,6 +56,7 @@ class UserTest {
 		u.setName("def");
 		
 		assertEquals(u.getName(),"def");
+		System.out.println("testSetName: Passed");
 	}
 
 	/**
@@ -65,6 +67,7 @@ class UserTest {
 		u.setPassword("123");
 		
 		assertEquals(u.getPassword(),"123");
+		System.out.println("testGetPassword: Passed");
 	}
 
 	/**
@@ -75,6 +78,7 @@ class UserTest {
 		u.setPassword("123");
 		
 		assertEquals(u.getPassword(),"123");
+		System.out.println("testSetPassword: Passed");
 	}
 
 	/**
@@ -85,6 +89,7 @@ class UserTest {
 		u.setEmail("a@a.com");
 		
 		assertEquals(u.getEmail(),"a@a.com");
+		System.out.println("testGetEmail: Passed");
 	}
 
 	/**
@@ -95,6 +100,7 @@ class UserTest {
 		u.setEmail("a@a.com");
 		
 		assertEquals(u.getEmail(),"a@a.com");
+		System.out.println("testSetEmail: Passed");
 	}
 
 	/**
@@ -105,6 +111,8 @@ class UserTest {
 		u.setLanguage("en");
 		
 		assertEquals(u.getLanguage(),"en");
+	
+		System.out.println("testSetLanguage: Passed");
 	}
 
 	/**
@@ -115,6 +123,8 @@ class UserTest {
 		u.setLanguage("en");
 		
 		assertEquals(u.getLanguage(),"en");
+		
+		System.out.println("testGetLanguage: Passed");
 	}
 
 }

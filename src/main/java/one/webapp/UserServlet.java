@@ -45,11 +45,9 @@ public class UserServlet extends HttpServlet {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+
         } catch (ClassNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+
         }
         return connection;
     }
@@ -74,7 +72,7 @@ public class UserServlet extends HttpServlet {
 		
 		
 		String action = request.getServletPath();
-		System.out.println("action is " + action);
+
        
                  try {
             switch (action) {
@@ -130,7 +128,7 @@ public class UserServlet extends HttpServlet {
                     String email = rs.getString("email");
                     String language = rs.getString("language");
                     users.add(new User(name, password, email, language));
-                    System.out.println(name);
+    
                 }
             } catch (SQLException e) {
                 printSQLException(e);
@@ -208,11 +206,6 @@ public class UserServlet extends HttpServlet {
         String email = request.getParameter("email");
         String language = request.getParameter("language");
         
-        System.out.println(name);
-        System.out.println(password);
-        System.out.println(email);
-        System.out.println(language);
-        
         //database operation
         try (Connection connection = getConnection(); PreparedStatement statement = connection.prepareStatement(UPDATE_USERS_SQL);) {
             statement.setString(1, name);
@@ -252,7 +245,7 @@ public class UserServlet extends HttpServlet {
                 System.err.println("Message: " + e.getMessage());
                 Throwable t = ex.getCause();
                 while (t != null) {
-                    System.out.println("Cause: " + t);
+
                     t = t.getCause();
                 }
             }
